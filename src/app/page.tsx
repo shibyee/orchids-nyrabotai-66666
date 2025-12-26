@@ -973,7 +973,7 @@ export default function ShowcasePage() {
                   {/* OVERLAY SCREENS */}
                   <AnimatePresence>
                     {screen === "s1" && (
-                      <motion.div initial={{ x: "100%" }} animate={{ x: 0 }} exit={{ x: "100%" }} transition={{ type: "spring", damping: 25 }} className="absolute inset-0 bg-[#0F0F0F] z-50 flex flex-col">
+                      <motion.div key="s1" initial={{ x: "100%" }} animate={{ x: 0 }} exit={{ x: "100%" }} transition={{ type: "spring", damping: 25 }} className="absolute inset-0 bg-[#0F0F0F] z-50 flex flex-col">
                         <header className="h-14 flex items-center justify-between px-4 border-b border-white/5">
                           <button onClick={() => setScreen("s3")} className="p-2 text-zinc-100"><X className="w-6 h-6" /></button>
                           <div className="font-semibold text-[18px]">Add Account</div>
@@ -1001,7 +1001,7 @@ export default function ShowcasePage() {
                     )}
 
                     {screen === "s2" && (
-                      <motion.div initial={{ x: "100%" }} animate={{ x: 0 }} exit={{ x: "100%" }} transition={{ type: "spring", damping: 25 }} className="absolute inset-0 bg-[#0F0F0F] z-50 flex flex-col">
+                      <motion.div key="s2" initial={{ x: "100%" }} animate={{ x: 0 }} exit={{ x: "100%" }} transition={{ type: "spring", damping: 25 }} className="absolute inset-0 bg-[#0F0F0F] z-50 flex flex-col">
                         <header className="h-14 flex items-center justify-between px-4 border-b border-white/5">
                           <button onClick={() => setScreen("s1")} className="p-2 text-zinc-100"><ArrowLeft className="w-6 h-6" /></button>
                           <div className="font-semibold text-[17px]">Import Private Key</div>
@@ -1028,10 +1028,10 @@ export default function ShowcasePage() {
                                   <input value={data.name} onChange={e => setData({...data, name: e.target.value})} className="w-full bg-[#1C1C1E] h-12 rounded-lg px-4 border border-white/5 font-bold text-[15px]" placeholder="Name" />
                                 <textarea value={privateKey} onChange={e => setPrivateKey(e.target.value)} className="w-full bg-[#1C1C1E] p-4 rounded-lg border border-white/5 h-28 font-mono text-[15px] resize-none" placeholder="Private key" style={{ WebkitTextSecurity: 'disc' } as any} />
                                 {privateKey && (
-                                  <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="flex justify-between items-center py-2 px-1">
+                                  <div className="flex justify-between items-center py-2 px-1">
                                     <span className="font-bold text-[15px]">Account Address</span>
                                     <span className="text-zinc-500 font-mono text-[15px]">{data.addr}</span>
-                                  </motion.div>
+                                  </div>
                                 )}
                               </div>
                             </div>
@@ -1043,7 +1043,7 @@ export default function ShowcasePage() {
                     )}
 
                     {screen === "editor" && (
-                      <motion.div initial={{ x: "100%" }} animate={{ x: 0 }} exit={{ x: "100%" }} transition={{ type: "spring", damping: 25 }} className="absolute inset-0 bg-[#0F0F0F] z-50 flex flex-col">
+                      <motion.div key="editor" initial={{ x: "100%" }} animate={{ x: 0 }} exit={{ x: "100%" }} transition={{ type: "spring", damping: 25 }} className="absolute inset-0 bg-[#0F0F0F] z-50 flex flex-col">
                         <header className="h-14 flex items-center justify-between px-4 border-b border-white/5">
                           <button onClick={() => setScreen("s1")} className="p-2 text-zinc-100"><ArrowLeft className="w-6 h-6" /></button>
                           <div className="font-bold text-[17px]">Edit Mock Data</div>
@@ -1075,7 +1075,7 @@ export default function ShowcasePage() {
                   </AnimatePresence>
 
                   {/* BASE TABS */}
-                  <div className="flex-1 flex flex-col">
+                  <div className="flex-1 flex flex-col overflow-hidden">
                     <div className="flex-1 overflow-y-auto">
                       {activeTab === "home" && (
                         <div className="p-4 flex flex-col">
@@ -1096,43 +1096,43 @@ export default function ShowcasePage() {
                               </div>
                             </div>
                           </header>
-                                <div className="flex flex-col items-center mb-8">
-                                  <div className="text-[48px] font-bold mb-1" style={{ fontFamily: "'Inter', sans-serif", letterSpacing: '-1.5px' }}>${data.bal}</div>
-                                  <div className="flex items-center gap-2 font-bold text-[17px]" style={{ fontFamily: "'Inter', sans-serif" }}>
-                                    <span className={data.delta.startsWith('-') ? "text-[#FF5C33]" : "text-[#00FFA3]"}>{data.delta.startsWith('-') ? "-$" : "+$"}{data.delta.replace('-', '')}</span>
-                                    <div className={`rounded-[8px] px-2.5 py-0.5 font-bold text-[16px] ${data.pct.startsWith('-') ? "bg-[#FF5C33]/15 text-[#FF5C33]" : "bg-[#00FFA3]/15 text-[#00FFA3]"}`}>{data.pct}%</div>
-                                  </div>
-                                </div>
-                            <div className="grid grid-cols-4 gap-3 mb-8">
-                              {[{i:<QrCode/>,l:'Receive'}, {i:<Send/>,l:'Send'}, {i:<Repeat/>,l:'Swap'}, {i:<DollarSign/>,l:'Buy'}].map((a, i) => (
-                                <div key={i} className="bg-[#1C1C1E] aspect-square rounded-2xl flex flex-col items-center justify-center gap-2 cursor-pointer active:scale-90 transition-transform">
-                                  <div className="text-[#AB9FF2]">{a.i}</div><span className="text-[12px] font-bold text-zinc-400">{a.l}</span>
-                                </div>
-                              ))}
+                          <div className="flex flex-col items-center mb-8">
+                            <div className="text-[48px] font-bold mb-1" style={{ letterSpacing: '-1.5px' }}>${data.bal}</div>
+                            <div className="flex items-center gap-2 font-bold text-[17px]">
+                              <span className={data.delta.startsWith('-') ? "text-[#FF5C33]" : "text-[#00FFA3]"}>{data.delta.startsWith('-') ? "-$" : "+$"}{data.delta.replace('-', '')}</span>
+                              <div className={`rounded-[8px] px-2.5 py-0.5 font-bold text-[16px] ${data.pct.startsWith('-') ? "bg-[#FF5C33]/15 text-[#FF5C33]" : "bg-[#00FFA3]/15 text-[#00FFA3]"}`}>{data.pct}%</div>
                             </div>
-                            {showBanner && (
-                              <div className="bg-[#1C1C1E] rounded-[18px] p-4 mb-4 flex items-center gap-4 relative border border-white/5">
-                                <div className="w-[48px] h-11 bg-[#2A2A2A] rounded-xl flex items-center justify-center overflow-hidden shrink-0">
-                                  <img src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/b3054992e11f725109af4ccf86f775f9d3d505e0-40x40-1766684995290.png" className="w-[42px] h-[34px] object-contain" alt="Terminal" />
-                                </div>
-                                <p className="text-[14px] font-bold leading-snug pr-4">{data.banner}</p>
-                                <X onClick={() => setShowBanner(false)} className="absolute top-2 right-2 text-zinc-500 w-4 h-4 cursor-pointer" />
+                          </div>
+                          <div className="grid grid-cols-4 gap-3 mb-8">
+                            {[{i:<QrCode/>,l:'Receive'}, {i:<Send/>,l:'Send'}, {i:<Repeat/>,l:'Swap'}, {i:<DollarSign/>,l:'Buy'}].map((a, i) => (
+                              <div key={i} className="bg-[#1C1C1E] aspect-square rounded-2xl flex flex-col items-center justify-center gap-2 cursor-pointer active:scale-90 transition-transform">
+                                <div className="text-[#AB9FF2]">{a.i}</div><span className="text-[12px] font-bold text-zinc-400">{a.l}</span>
                               </div>
-                            )}
-                              <div className="bg-[#1C1C1E] rounded-[20px] p-4 flex items-center justify-between border border-white/5 active:bg-[#252528] transition-colors cursor-pointer" onClick={copyAddr}>
-                                <div className="flex items-center gap-3">
-                                  <div className="w-11 h-11 rounded-full bg-black flex items-center justify-center overflow-hidden border border-white/5">
-                                    <img src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/file-1766685022437.png" className="w-11 h-11 object-cover" alt="Solana" />
-                                  </div>
-                                  <div className="flex flex-col"><span className="font-bold text-[17px]">{data.tokName}</span><span className="text-[13.5px] text-zinc-500 font-bold">{data.tokAmt}</span></div>
-                                </div>
-                                <div className="flex flex-col items-end"><span className="font-bold text-[17px]">${data.tokUsd}</span><span className="text-[13.5px] font-bold text-[#FF5C33]">{data.tokChg.startsWith('-') ? "-$" : "+$"}{data.tokChg.replace('-', '')}</span></div>
+                            ))}
+                          </div>
+                          {showBanner && (
+                            <div className="bg-[#1C1C1E] rounded-[18px] p-4 mb-4 flex items-center gap-4 relative border border-white/5">
+                              <div className="w-[48px] h-11 bg-[#2A2A2A] rounded-xl flex items-center justify-center overflow-hidden shrink-0">
+                                <img src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/b3054992e11f725109af4ccf86f775f9d3d505e0-40x40-1766684995290.png" className="w-[42px] h-[34px] object-contain" alt="Terminal" />
                               </div>
+                              <p className="text-[14px] font-bold leading-snug pr-4">{data.banner}</p>
+                              <X onClick={() => setShowBanner(false)} className="absolute top-2 right-2 text-zinc-500 w-4 h-4 cursor-pointer" />
+                            </div>
+                          )}
+                          <div className="bg-[#1C1C1E] rounded-[20px] p-4 flex items-center justify-between border border-white/5 active:bg-[#252528] transition-colors cursor-pointer" onClick={copyAddr}>
+                            <div className="flex items-center gap-3">
+                              <div className="w-11 h-11 rounded-full bg-black flex items-center justify-center overflow-hidden border border-white/5">
+                                <img src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/file-1766685022437.png" className="w-11 h-11 object-cover" alt="Solana" />
+                              </div>
+                              <div className="flex flex-col"><span className="font-bold text-[17px]">{data.tokName}</span><span className="text-[13.5px] text-zinc-500 font-bold">{data.tokAmt}</span></div>
+                            </div>
+                            <div className="flex flex-col items-end"><span className="font-bold text-[17px]">${data.tokUsd}</span><span className={`text-[13.5px] font-bold ${data.tokChg.startsWith('-') ? "text-[#FF5C33]" : "text-[#00FFA3]"}`}>{data.tokChg.startsWith('-') ? "-$" : "+$"}{data.tokChg.replace('-', '')}</span></div>
+                          </div>
                         </div>
                       )}
-                      {activeTab !== "home" && <div className="flex-1 flex items-center justify-center text-zinc-500 font-bold text-sm">No data available in this mock section</div>}
+                      {activeTab !== "home" && <div className="flex-1 h-[400px] flex items-center justify-center text-zinc-500 font-bold text-sm">No data available in this mock section</div>}
                     </div>
-                    <nav className="h-16 bg-[#0F0F0F] border-t border-white/5 flex items-center justify-around">
+                    <nav className="h-16 bg-[#0F0F0F] border-t border-white/5 flex items-center justify-around shrink-0">
                       {[
                         { id: "home", icon: <Home className={activeTab === "home" ? "fill-current" : ""} /> },
                         { id: "grid", icon: <LayoutGrid /> },
