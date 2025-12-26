@@ -1,13 +1,15 @@
 "use client";
 
 import React, { useState } from "react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Badge } from "@/components/ui/badge";
 import { 
   Puzzle, 
   Settings, 
   Chrome, 
+  Download, 
   Code2, 
   Eye, 
   Home,
@@ -1013,11 +1015,9 @@ export default function ShowcasePage() {
                                <div className="w-full space-y-3">
                                  <div className="bg-[#1C1C1E] h-12 rounded-lg px-4 flex items-center justify-between border border-white/5">
                                      <div className="flex items-center gap-3">
-                          <div className="select-icon-box" style={{ background: 'transparent', border: 'none' }}>
-                                           <div className="w-8 h-8 bg-white flex items-center justify-center rounded-[8px]">
-                                             <img src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/Solana-Crypto-Logo-Transparent-resized-1766733105389.webp" className="w-5 h-5 object-contain" alt="Solana" style={{ filter: 'brightness(0)' }} />
-                                           </div>
-                                         </div>
+                                       <div className="w-8 h-8 bg-white flex items-center justify-center rounded-[8px]">
+                                         <img src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/Solana-Crypto-Logo-Transparent-resized-1766733105389.webp" className="w-5 h-5 object-contain" alt="Solana" style={{ filter: 'brightness(0)' }} />
+                                       </div>
                                        <span className="font-bold text-[15px]">Solana</span>
                                      </div>
                                    <ChevronDown className="w-4 h-4 text-zinc-500" />
