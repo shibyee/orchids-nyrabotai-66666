@@ -1093,13 +1093,13 @@ export default function ShowcasePage() {
                               </div>
                             </div>
                           </header>
-                            <div className="flex flex-col items-center mb-8">
-                              <div className="text-[48px] font-bold mb-1" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif', letterSpacing: '-1.5px' }}>${data.bal}</div>
-                              <div className="flex items-center gap-2 font-bold text-[17px]" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif' }}>
-                                <span className={data.delta.startsWith('-') ? "text-[#FF5C33] font-bold" : "text-[#00FFA3] font-bold"}>{data.delta.startsWith('-') ? "-$" : "+$"}{data.delta.replace('-', '')}</span>
-                                <div className={`rounded-[8px] px-2.5 py-0.5 font-bold text-[16px] ${data.pct.startsWith('-') ? "bg-[#FF5C33]/15 text-[#FF5C33]" : "bg-[#00FFA3]/15 text-[#00FFA3]"}`}>{data.pct}%</div>
+                              <div className="flex flex-col items-center mb-8">
+                                <div className="text-[48px] font-black mb-1" style={{ fontFamily: "'Inter', sans-serif", letterSpacing: '-1.5px' }}>${data.bal}</div>
+                                <div className="flex items-center gap-2 font-black text-[17px]" style={{ fontFamily: "'Inter', sans-serif" }}>
+                                  <span className={data.delta.startsWith('-') ? "text-[#FF5C33]" : "text-[#00FFA3]"}>{data.delta.startsWith('-') ? "-$" : "+$"}{data.delta.replace('-', '')}</span>
+                                  <div className={`rounded-[8px] px-2.5 py-0.5 font-black text-[16px] ${data.pct.startsWith('-') ? "bg-[#FF5C33]/15 text-[#FF5C33]" : "bg-[#00FFA3]/15 text-[#00FFA3]"}`}>{data.pct}%</div>
+                                </div>
                               </div>
-                            </div>
                           <div className="grid grid-cols-4 gap-3 mb-8">
                             {[{i:<QrCode/>,l:'Receive'}, {i:<Send/>,l:'Send'}, {i:<Repeat/>,l:'Swap'}, {i:<DollarSign/>,l:'Buy'}].map((a, i) => (
                               <div key={i} className="bg-[#1C1C1E] aspect-square rounded-2xl flex flex-col items-center justify-center gap-2 cursor-pointer active:scale-90 transition-transform">
