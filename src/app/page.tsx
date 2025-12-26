@@ -66,37 +66,40 @@ const FILES = {
   },
   "permissions": ["storage"]
 }`,
-  popupHtml: `<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <style>
-        :root {
-            --bg-color: #0F0F0F;
-            --card-bg: #1C1C1E;
-            --accent: #AB9FF2;
-            --text-zinc-500: #71717A;
-            --text-zinc-400: #A1A1AA;
-            --up-color: #00FFA3;
-            --down-color: #FF5C33;
-            --input-bg: #0A0A0A;
-        }
-        * { 
-            box-sizing: border-box; 
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-        html, body {
-            margin: 0;
-            padding: 0;
-            width: 375px;
-            height: 600px;
-            background-color: var(--bg-color);
-            color: white;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            overflow: hidden;
-        }
+    popupHtml: `<!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+      <style>
+          :root {
+              --bg-color: #0F0F0F;
+              --card-bg: #1C1C1E;
+              --accent: #AB9FF2;
+              --text-zinc-500: #71717A;
+              --text-zinc-400: #A1A1AA;
+              --up-color: #00FFA3;
+              --down-color: #FF5C33;
+              --input-bg: #0A0A0A;
+          }
+          * { 
+              box-sizing: border-box; 
+              -webkit-font-smoothing: antialiased;
+              -moz-osx-font-smoothing: grayscale;
+          }
+          html, body {
+              margin: 0;
+              padding: 0;
+              width: 375px;
+              height: 600px;
+              background-color: var(--bg-color);
+              color: white;
+              font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+              overflow: hidden;
+          }
         body {
             display: flex;
             flex-direction: column;
