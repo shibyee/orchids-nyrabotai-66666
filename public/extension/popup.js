@@ -161,6 +161,7 @@ window.onload = () => {
         document.getElementById('banner').style.display = 'none';
     });
     document.getElementById('btn-editor-back')?.addEventListener('click', () => showScreen('s1'));
+    document.querySelector('#s-import-pk .btn-back')?.addEventListener('click', () => showScreen('s1'));
     document.getElementById('btn-save')?.addEventListener('click', () => saveData());
 
     updateUI();
