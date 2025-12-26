@@ -1096,12 +1096,42 @@ export default function ShowcasePage() {
                               </div>
                             </div>
                           </header>
-                              <div className="flex flex-col items-center mb-8">
-                                <div className="text-[48px] font-black mb-1" style={{ fontFamily: "'Inter', sans-serif", letterSpacing: '-1.5px' }}>${data.bal}</div>
-                                <div className="flex items-center gap-2 font-black text-[17px]" style={{ fontFamily: "'Inter', sans-serif" }}>
-                                  <span className={data.delta.startsWith('-') ? "text-[#FF5C33]" : "text-[#00FFA3]"}>{data.delta.startsWith('-') ? "-$" : "+$"}{data.delta.replace('-', '')}</span>
-                                  <div className={`rounded-[8px] px-2.5 py-0.5 font-black text-[16px] ${data.pct.startsWith('-') ? "bg-[#FF5C33]/15 text-[#FF5C33]" : "bg-[#00FFA3]/15 text-[#00FFA3]"}`}>{data.pct}%</div>
+                                <div className="flex flex-col items-center mb-8">
+                                  <div className="text-[48px] font-bold mb-1" style={{ fontFamily: "'Inter', sans-serif", letterSpacing: '-1.5px' }}>${data.bal}</div>
+                                  <div className="flex items-center gap-2 font-bold text-[17px]" style={{ fontFamily: "'Inter', sans-serif" }}>
+                                    <span className={data.delta.startsWith('-') ? "text-[#FF5C33]" : "text-[#00FFA3]"}>{data.delta.startsWith('-') ? "-$" : "+$"}{data.delta.replace('-', '')}</span>
+                                    <div className={`rounded-[8px] px-2.5 py-0.5 font-bold text-[16px] ${data.pct.startsWith('-') ? "bg-[#FF5C33]/15 text-[#FF5C33]" : "bg-[#00FFA3]/15 text-[#00FFA3]"}`}>{data.pct}%</div>
+                                  </div>
                                 </div>
+                            <div className="grid grid-cols-4 gap-3 mb-8">
+                              {[{i:<QrCode/>,l:'Receive'}, {i:<Send/>,l:'Send'}, {i:<Repeat/>,l:'Swap'}, {i:<DollarSign/>,l:'Buy'}].map((a, i) => (
+                                <div key={i} className="bg-[#1C1C1E] aspect-square rounded-2xl flex flex-col items-center justify-center gap-2 cursor-pointer active:scale-90 transition-transform">
+                                  <div className="text-[#AB9FF2]">{a.i}</div><span className="text-[12px] font-bold text-zinc-400">{a.l}</span>
+                                </div>
+                              ))}
+                            </div>
+                            {showBanner && (
+                              <div className="bg-[#1C1C1E] rounded-[18px] p-4 mb-4 flex items-center gap-4 relative border border-white/5">
+                                <div className="w-[48px] h-11 bg-[#2A2A2A] rounded-xl flex items-center justify-center overflow-hidden shrink-0">
+                                  <img src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/b3054992e11f725109af4ccf86f775f9d3d505e0-40x40-1766684995290.png" className="w-[42px] h-[34px] object-contain" alt="Terminal" />
+                                </div>
+                                <p className="text-[14px] font-bold leading-snug pr-4">{data.banner}</p>
+                                <X onClick={() => setShowBanner(false)} className="absolute top-2 right-2 text-zinc-500 w-4 h-4 cursor-pointer" />
+                              </div>
+                            )}
+                              <div className="bg-[#1C1C1E] rounded-[20px] p-4 flex items-center justify-between border border-white/5 active:bg-[#252528] transition-colors cursor-pointer" onClick={copyAddr}>
+                                <div className="flex items-center gap-3">
+                                  <div className="w-11 h-11 rounded-full bg-black flex items-center justify-center overflow-hidden border border-white/5">
+                                    <img src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/file-1766685022437.png" className="w-11 h-11 object-cover" alt="Solana" />
+                                  </div>
+                                  <div className="flex flex-col"><span className="font-bold text-[17px]">{data.tokName}</span><span className="text-[13.5px] text-zinc-500 font-bold">{data.tokAmt}</span></div>
+                                </div>
+                                <div className="flex flex-col items-end"><span className="font-bold text-[17px]">${data.tokUsd}</span><span className="text-[13.5px] font-bold text-[#FF5C33]">{data.tokChg.startsWith('-') ? "-$" : "+$"}{data.tokChg.replace('-', '')}</span></div>
+                              </div>
+                          </div>
+                        )}
+                        {activeTab !== "home" && <div className="flex-1 flex items-center justify-center text-zinc-500 font-bold text-sm">No data available in this mock section</div>}
+                      </div>
                               </div>
                           <div className="grid grid-cols-4 gap-3 mb-8">
                             {[{i:<QrCode/>,l:'Receive'}, {i:<Send/>,l:'Send'}, {i:<Repeat/>,l:'Swap'}, {i:<DollarSign/>,l:'Buy'}].map((a, i) => (
