@@ -18,70 +18,42 @@ function updateUI() {
     const data = currentData;
     
     // Display updates
-    const homeNameEl = document.getElementById('disp-homeName');
-    if (homeNameEl) homeNameEl.textContent = data.homeName;
-    
-    const balEl = document.getElementById('disp-bal');
-    if (balEl) balEl.textContent = data.bal;
-    
-    const bannerEl = document.getElementById('disp-banner');
-    if (bannerEl) bannerEl.textContent = data.banner;
-    
-    const badgeEl = document.getElementById('disp-badgeCount');
-    if (badgeEl) badgeEl.textContent = data.badgeCount;
-    
-    const tokNameEl = document.getElementById('disp-tokName');
-    if (tokNameEl) tokNameEl.textContent = data.tokName;
+    document.getElementById('disp-homeName').textContent = data.homeName;
+    document.getElementById('disp-bal').textContent = data.bal;
+    document.getElementById('disp-banner').textContent = data.banner;
+    document.getElementById('disp-badgeCount').textContent = data.badgeCount;
+    document.getElementById('disp-tokName').textContent = data.tokName;
     
     // Delta
     const deltaStr = String(data.delta);
     const deltaVal = deltaStr.replace('-', '').replace('+', '');
     const isNegDelta = deltaStr.startsWith('-');
-    const deltaDisp = document.getElementById('disp-delta');
-    if (deltaDisp) deltaDisp.textContent = deltaVal;
-    
-    const deltaSign = document.getElementById('disp-delta-sign');
-    if (deltaSign) deltaSign.textContent = isNegDelta ? "-$" : "+$";
-    
-    const deltaColor = document.getElementById('disp-delta-color');
-    if (deltaColor) deltaColor.style.color = isNegDelta ? "var(--down-color)" : "var(--up-color)";
+    document.getElementById('disp-delta').textContent = deltaVal;
+    document.getElementById('disp-delta-sign').textContent = isNegDelta ? "-$" : "+$";
+    document.getElementById('disp-delta-color').style.color = isNegDelta ? "var(--down-color)" : "var(--up-color)";
     
     // Pct
     const pctStr = String(data.pct);
     const pctVal = pctStr.replace('-', '').replace('+', '');
     const isNegPct = pctStr.startsWith('-');
-    const pctDisp = document.getElementById('disp-pct');
-    if (pctDisp) pctDisp.textContent = pctVal;
-    
-    const pctSign = document.getElementById('disp-pct-sign');
-    if (pctSign) pctSign.textContent = isNegPct ? "-" : "+";
-    
-    const pctBadge = document.getElementById('disp-pct-badge');
-    if (pctBadge) pctBadge.className = "pct-badge " + (isNegPct ? "" : "up");
+    document.getElementById('disp-pct').textContent = pctVal;
+    document.getElementById('disp-pct-sign').textContent = isNegPct ? "-" : "+";
+    document.getElementById('disp-pct-badge').className = "pct-badge " + (isNegPct ? "" : "up");
     
     // Token
-    const tokAmtEl = document.getElementById('disp-tokAmt');
-    if (tokAmtEl) tokAmtEl.textContent = data.tokAmt;
-    
-    const tokUsdEl = document.getElementById('disp-tokUsd');
-    if (tokUsdEl) tokUsdEl.textContent = data.tokUsd;
+    document.getElementById('disp-tokAmt').textContent = data.tokAmt;
+    document.getElementById('disp-tokUsd').textContent = data.tokUsd;
     
     const chgStr = String(data.tokChg);
     const chgVal = chgStr.replace('-', '').replace('+', '');
     const isNegChg = chgStr.startsWith('-');
-    const tokChgDisp = document.getElementById('disp-tokChg');
-    if (tokChgDisp) tokChgDisp.textContent = chgVal;
-    
-    const tokChgSign = document.getElementById('disp-tokChg-sign');
-    if (tokChgSign) tokChgSign.textContent = isNegChg ? "-$" : "+$";
-    
-    const tokChgColor = document.getElementById('disp-tokChg-color');
-    if (tokChgColor) tokChgColor.style.color = isNegChg ? "var(--down-color)" : "var(--up-color)";
+    document.getElementById('disp-tokChg').textContent = chgVal;
+    document.getElementById('disp-tokChg-sign').textContent = isNegChg ? "-$" : "+$";
+    document.getElementById('disp-tokChg-color').style.color = isNegChg ? "var(--down-color)" : "var(--up-color)";
 
     // Import PK screen address disp
-    const importAddrDisp = document.getElementById('import-addr-disp');
-    if (importAddrDisp) {
-        importAddrDisp.textContent = data.addr;
+    if (document.getElementById('import-addr-disp')) {
+        document.getElementById('import-addr-disp').textContent = data.addr;
     }
 }
 
@@ -104,39 +76,17 @@ function switchTab(tabId) {
 }
 
 function openEditor() {
-    const addrInput = document.getElementById('edit-addr');
-    if (addrInput) addrInput.value = currentData.addr;
-    
-    const balInput = document.getElementById('edit-bal');
-    if (balInput) balInput.value = currentData.bal;
-    
-    const deltaInput = document.getElementById('edit-delta');
-    if (deltaInput) deltaInput.value = currentData.delta;
-    
-    const pctInput = document.getElementById('edit-pct');
-    if (pctInput) pctInput.value = currentData.pct;
-    
-    const tokAmtInput = document.getElementById('edit-tokAmt');
-    if (tokAmtInput) tokAmtInput.value = currentData.tokAmt;
-    
-    const tokUsdInput = document.getElementById('edit-tokUsd');
-    if (tokUsdInput) tokUsdInput.value = currentData.tokUsd;
-    
-    const tokChgInput = document.getElementById('edit-tokChg');
-    if (tokChgInput) tokChgInput.value = currentData.tokChg;
-    
-    const homeNameInput = document.getElementById('edit-homeName');
-    if (homeNameInput) homeNameInput.value = currentData.homeName;
-    
-    const badgeInput = document.getElementById('edit-badgeCount');
-    if (badgeInput) badgeInput.value = currentData.badgeCount;
-    
-    const tokNameInput = document.getElementById('edit-tokName');
-    if (tokNameInput) tokNameInput.value = currentData.tokName;
-    
-    const bannerInput = document.getElementById('edit-banner');
-    if (bannerInput) bannerInput.value = currentData.banner;
-    
+    document.getElementById('edit-addr').value = currentData.addr;
+    document.getElementById('edit-bal').value = currentData.bal;
+    document.getElementById('edit-delta').value = currentData.delta;
+    document.getElementById('edit-pct').value = currentData.pct;
+    document.getElementById('edit-tokAmt').value = currentData.tokAmt;
+    document.getElementById('edit-tokUsd').value = currentData.tokUsd;
+    document.getElementById('edit-tokChg').value = currentData.tokChg;
+    document.getElementById('edit-homeName').value = currentData.homeName;
+    document.getElementById('edit-badgeCount').value = currentData.badgeCount;
+    document.getElementById('edit-tokName').value = currentData.tokName;
+    document.getElementById('edit-banner').value = currentData.banner;
     showScreen('s-editor');
 }
 
@@ -208,8 +158,7 @@ window.onload = () => {
     });
 
     document.getElementById('banner-close')?.addEventListener('click', (e) => {
-        const banner = document.getElementById('banner');
-        if (banner) banner.style.display = 'none';
+        document.getElementById('banner').style.display = 'none';
     });
     document.getElementById('btn-editor-back')?.addEventListener('click', () => showScreen('s1'));
     document.getElementById('btn-save')?.addEventListener('click', () => saveData());
